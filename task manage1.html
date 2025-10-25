@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TaskMaster - Manage Your Tasks</title>
+    <link rel="stylesheet" href="task manager2.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <div class="header-content">
+                <h1><i class="fas fa-tasks"></i> TaskMaster</h1>
+                <p>Your Personal Productivity Companion</p>
+            </div>
+        </header>
+
+        <!-- Stats Section -->
+        <div class="stats">
+            <div class="stat-card">
+                <h3>Total Tasks</h3>
+                <span id="totalTasks">0</span>
+            </div>
+            <div class="stat-card">
+                <h3>Pending</h3>
+                <span id="pendingTasks">0</span>
+            </div>
+            <div class="stat-card">
+                <h3>Completed</h3>
+                <span id="completedTasks">0</span>
+            </div>
+        </div>
+
+        <!-- Add Task Form -->
+        <div class="add-task-section">
+            <div class="add-task-card">
+                <h3><i class="fas fa-plus-circle"></i> Add New Task</h3>
+                <form id="taskForm">
+                    <div class="form-group">
+                        <input type="text" id="taskInput" placeholder="Enter your task..." required>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="taskCategory"><i class="fas fa-tag"></i> Category</label>
+                            <select id="taskCategory">
+                                <option value="personal">Personal</option>
+                                <option value="work">Work</option>
+                                <option value="shopping">Shopping</option>
+                                <option value="health">Health</option>
+                                <option value="education">Education</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="taskPriority"><i class="fas fa-exclamation-circle"></i> Priority</label>
+                            <select id="taskPriority">
+                                <option value="low">Low</option>
+                                <option value="medium">Medium</option>
+                                <option value="high">High</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="taskDueDate"><i class="fas fa-calendar"></i> Due Date</label>
+                            <input type="date" id="taskDueDate">
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary">
+                        <i class="fas fa-plus"></i> Add Task
+                    </button>
+                </form>
+            </div>
+        </div>
+
+        <!-- Filter and Search -->
+        <div class="filter-section">
+            <div class="search-box">
+                <i class="fas fa-search"></i>
+                <input type="text" id="searchInput" placeholder="Search tasks...">
+            </div>
+            <div class="filter-buttons">
+                <button class="filter-btn active" data-filter="all">All</button>
+                <button class="filter-btn" data-filter="pending">Pending</button>
+                <button class="filter-btn" data-filter="completed">Completed</button>
+                <select id="categoryFilter">
+                    <option value="all">All Categories</option>
+                    <option value="personal">Personal</option>
+                    <option value="work">Work</option>
+                    <option value="shopping">Shopping</option>
+                    <option value="health">Health</option>
+                    <option value="education">Education</option>
+                </select>
+            </div>
+        </div>
+
+        <!-- Tasks List -->
+        <div class="tasks-section">
+            <h3><i class="fas fa-list"></i> Your Tasks</h3>
+            <div id="tasksList" class="tasks-list">
+                <!-- Tasks will be dynamically added here -->
+            </div>
+            <div id="emptyState" class="empty-state">
+                <i class="fas fa-clipboard-list"></i>
+                <h3>No tasks yet</h3>
+                <p>Add your first task to get started!</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Edit Task Modal -->
+    <div id="editModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h3>Edit Task</h3>
+            <form id="editTaskForm">
+                <input type="hidden" id="editTaskId">
+                <div class="form-group">
+                    <input type="text" id="editTaskInput" required>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Category</label>
+                        <select id="editTaskCategory">
+                            <option value="personal">Personal</option>
+                            <option value="work">Work</option>
+                            <option value="shopping">Shopping</option>
+                            <option value="health">Health</option>
+                            <option value="education">Education</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Priority</label>
+                        <select id="editTaskPriority">
+                            <option value="low">Low</option>
+                            <option value="medium">Medium</option>
+                            <option value="high">High</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Due Date</label>
+                        <input type="date" id="editTaskDueDate">
+                    </div>
+                </div>
+                <div class="modal-actions">
+                    <button type="submit" class="btn btn-primary">Update Task</button>
+                    <button type="button" class="btn btn-secondary" id="closeModal">Cancel</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="task manage3.js"></script>
+</body>
+</html>
